@@ -27,7 +27,7 @@ public class Offer implements Serializable{
 	private Instant startMoment;
 	private Instant endMoment;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name="course_id")
 	private Course course;
 	
