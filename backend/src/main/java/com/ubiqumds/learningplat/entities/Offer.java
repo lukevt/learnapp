@@ -2,6 +2,8 @@ package com.ubiqumds.learningplat.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,6 +30,9 @@ public class Offer implements Serializable{
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="course_id")
 	private Course course;
+	
+	@OneToMany(mappedBy ="offer")
+	private List <Resource> resources = new ArrayList<>();
 
 	public Offer() {
 		
@@ -83,6 +89,12 @@ public class Offer implements Serializable{
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	
+	
+
+	public List<Resource> getResources() {
+		return resources;
 	}
 
 	@Override
